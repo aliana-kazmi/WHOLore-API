@@ -62,7 +62,7 @@ class Ally(models.Model):
 
 class Companion(models.Model):
     name = models.CharField(max_length=45)
-    nickname = models.CharField(max_length=65, unique=True)
+    nickname = models.CharField(max_length=65, null=True, blank=True)
     image = models.ImageField(upload_to='images/Companions')
     played_by = models.ManyToManyField(Actor)
     featured_in = models.ManyToManyField(Episode)
