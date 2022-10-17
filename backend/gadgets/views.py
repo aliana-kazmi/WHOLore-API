@@ -1,17 +1,17 @@
 from django.shortcuts import render
-from django.db import models
-# Create your views here.
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
-class Episode(models.Model):
-    name = models.CharField(max_length=35)
-    date_aired = models.DateField()
-    season = models.PositiveSmallIntegerField()
-    episode = models.PositiveSmallIntegerField()
+from characters.serializers import SerialSerializer
+from .serializers import *
+
+@api_view(['POST'])
+def add_gadget(request, *args, **kwargs): 
+    serialized_data = GadgetSerializer(data=request.data)
     
-
-class Gadget(models.Model):
-    name = models.CharField(max_length=45)
-    description = models.TextField(blank=True, null=True)
-    debue_date = models.DateField()
-
-
+    if serialized_data.is_valid():
+        instance = serialized_data.save()
+        print(instance)
+        return Response(serialized_data.data)
+    else:
+        return Response({'error':'Invalid data submitted'},status=400)
