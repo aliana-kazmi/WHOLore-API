@@ -4,6 +4,7 @@ from .serializers import *
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+# Fix this func so that it can show all companions in json
 @api_view(['GET'])
 def all_companions(request, *args, **kwargs):
     query = Companion.objects.all().first()
