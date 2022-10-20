@@ -27,6 +27,7 @@ class EpisodeSerializer(serializers.ModelSerializer):
         model = Episode
 
 class CompanionSerializer(serializers.ModelSerializer):
+
     class Meta:
         actor = ActorSerializer(read_only=True, many=True)
         episode = EpisodeSerializer(read_only=True, many=True)

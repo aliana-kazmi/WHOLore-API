@@ -65,7 +65,7 @@ class Companion(models.Model):
     nickname = models.CharField(max_length=65, null=True, blank=True)
     image = models.ImageField(upload_to='images/Companions')
     played_by = models.ManyToManyField(Actor)
-    featured_in = models.ManyToManyField(Episode)
+    featured_in = models.ManyToManyField(Serial, blank=True, null=True)
 
     def __str__(self):
         return self.name
