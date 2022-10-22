@@ -23,7 +23,7 @@ class Serial(models.Model):
     def __str__(self):
         if self.season.season_no<11200:
             return "Serial{} Ep{}: {}".format(self.season.season_no, self.serial_no, self.title)
-        return "Series{} Ep{}: {}".format(self.season.season_no-11201, self.serial_no, self.title)
+        return "Series{} Ep{}: {}".format(self.season.season_no-11200, self.serial_no, self.title)
 
 class Episode(models.Model):
     EPISODE_CHOICES = (
