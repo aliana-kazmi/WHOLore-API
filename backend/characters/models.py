@@ -22,8 +22,8 @@ class Serial(models.Model):
 
     def __str__(self):
         if self.season.season_no<11200:
-            return "Serial{} Ep{}: {}".format(self.season.season_no, self.serial_no, self.title)
-        return "Series{} Ep{}: {}".format(self.season.season_no-11200, self.serial_no, self.title)
+            return "Season {} Serial {}: {}".format(self.season.season_no, self.serial_no, self.title)
+        return "Season {} Series {}: {}".format(self.season.season_no-11200, self.serial_no, self.title)
 
 class Episode(models.Model):
     EPISODE_CHOICES = (
@@ -56,7 +56,7 @@ class AlienRace(models.Model):
     name = models.CharField(max_length=70)
     featured_in = models.ManyToManyField(Serial)
     description = models.TextField()
-    image=models.ImageField(upload_to='images/Races',null=True)
+    image=models.ImageField(blank=True, null=True,upload_to='images/Races')
     # played_by = models.ManyToManyField(Actor)
   
     class Meta:
