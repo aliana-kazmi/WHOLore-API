@@ -8,11 +8,13 @@ from characters.serializers import *
 def api_home(request, *args, **kwargs):
     data_here = {
         'Doctors':'',
-        'Comapnions':'',
+        'Companions':'',
+        'Villains':'',
+        'Alien Race':'', 
+        'Gadgets':'',              
         'Writers':'',
-        'Gadgets':'',
         'Serials':'',
-        'Ally':'',
+
 
     }
     return Response(data_here)

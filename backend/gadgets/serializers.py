@@ -4,5 +4,5 @@ from .models import *
 class GadgetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Gadget
-        fields = '__all__'
+        fields = ['name','description','debue_date']
         
