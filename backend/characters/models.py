@@ -97,14 +97,18 @@ class Doctor(models.Model):
     featured_in = models.ManyToManyField(Season)
 
     def __str__(self):
-        ones_digit = self.number % 10
-        str = ""
-        if ones_digit == 1 and self.number%100 !=11:
-            str="st"
-        elif ones_digit == 2 and self.number%100 !=12:
-            str="nd"
-        elif ones_digit == 3 and self.number%100 !=13:
-            str="rd"
+        if self.number.isnumeric():
+            ones_digit = int(self.number) % 10
+            two_digits = int(self.number) % 100
+            str = ""
+            if ones_digit == 1 and  two_digits != 11:
+                str="st"
+            elif ones_digit == 2 and two_digits != 12:
+                str="nd"
+            elif ones_digit == 3 and two_digits != 13:
+                str="rd"
+            else:
+                str="th"
+            return "{}{} Doctor".format(self.number,str)
         else:
-            str="th"
-        return "{}{} Doctor".format(self.number,str)
+            return "{} Doctor".format(self.number)
