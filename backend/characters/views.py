@@ -5,11 +5,23 @@ from .serializers import *
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-# Fix this func so that it can show all companions in json
+
 class AllCompanionsAPIView(generics.ListAPIView):
     queryset = Companion.objects.all()
     serializer_class = CompanionSerializer
-  
+
+class AllAlienRacesAPIView(generics.ListAPIView):
+    queryset = AlienRace.objects.all()
+    serializer_class = AlienSerializer
+
+class AllVillainsAPIView(generics.ListAPIView):
+    queryset = Villain.objects.all()
+    serializer_class = VillainSerializer
+
+class DoctorAPIView(generics.ListAPIView):
+    queryset = Doctor.objects.all()
+    serializer_class = DoctorSerializer
+
 @api_view(['GET'])
 def companion(request, pk):
     print('here')
@@ -35,3 +47,5 @@ def companion(request, pk):
     else:
         print('companion empty')
     return Response(data_here)
+
+    #TODO: add web scraper to views so that it keeps updating the database
