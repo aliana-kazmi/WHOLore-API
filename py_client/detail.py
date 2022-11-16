@@ -1,6 +1,6 @@
 import requests
 from urllib.parse import unquote
-endpoint = "http://127.0.0.1:8000/api/character/companion/"
+endpoint = "http://127.0.0.1:8000/api/characters/companions"
 
 get_response = requests.get(
     endpoint,

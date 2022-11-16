@@ -24,7 +24,15 @@ class AllSerialsAPIView(generics.ListAPIView):
     queryset = Serial.objects.all()
     serializer_class = SerialSerializer
 
+class SerialDetailAPIView(generics.RetrieveAPIView):
+    queryset = Serial.objects.all()
+    serializer_class = SerialSerializer
+
 class AllEpisodesAPIView(generics.ListAPIView):
     queryset = Episode.objects.all()
     serializer_class = EpisodeSerializer
 
+class EpisodeDetailAPIView(generics.ListAPIView):
+    queryset = Episode.objects.all()
+    serializer_class = EpisodeSerializer
+    

@@ -29,7 +29,7 @@ class Serial(models.Model):
 
     def __str__(self):
         if self.season.season_no<11200:
-            return "Season {} Serial {}: {}".format(self.season.season_no, self.serial_no, self.title)
+            return "Season {} Serial {}: {}".format(self.pk,self.season.season_no, self.serial_no, self.title)
         return "Season {} Series {}: {}".format(self.season.season_no-11200, self.serial_no, self.title)
 
     class Meta:
