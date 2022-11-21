@@ -1,5 +1,5 @@
 from django.shortcuts import render,get_object_or_404
-from rest_framework import status,generics, mixins
+from rest_framework import generics, mixins,authentication, permissions
 from .models import *
 from .serializers import *
 from rest_framework.decorators import api_view
@@ -14,6 +14,8 @@ class CompanionMixinAPIView(
     queryset = Companion.objects.all()
     serializer_class = CompanionSerializer
     lookup_field = 'pk'
+    authentication_classes = [authentication.SessionAuthentication]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get(self, request, *args,**kwargs):
         pk = kwargs.get("pk")
@@ -23,11 +25,6 @@ class CompanionMixinAPIView(
 
 
 CompanionView = CompanionMixinAPIView.as_view()
-
-
-class AllCompanionsAPIView(generics.ListAPIView):
-    queryset = Companion.objects.all()
-    serializer_class = CompanionSerializer
 
 
 class AlienMixinAPIView(
@@ -48,10 +45,6 @@ class AlienMixinAPIView(
 
 AlienView = AlienMixinAPIView.as_view()
 
-class AllAlienRacesAPIView(generics.ListAPIView):
-    queryset = AlienRace.objects.all()
-    serializer_class = AlienSerializer
-
 
 class VillainMixinAPIView(
     mixins.ListModelMixin,
@@ -70,10 +63,6 @@ class VillainMixinAPIView(
         return self.list(request, *args, **kwargs)
 
 VillainView = VillainMixinAPIView.as_view()
-
-class AllVillainsAPIView(generics.ListAPIView):
-    queryset = Villain.objects.all()
-    serializer_class = VillainSerializer
 
 
 class DoctorMixinAPIView(
@@ -94,9 +83,6 @@ class DoctorMixinAPIView(
 
 DoctorView = DoctorMixinAPIView.as_view()
 
-class DoctorAPIView(generics.ListAPIView):
-    queryset = Doctor.objects.all()
-    serializer_class = DoctorSerializer
 
 # @api_view(['GET'])
 # def companion(request, pk=None):

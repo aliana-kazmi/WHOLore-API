@@ -1,20 +1,29 @@
 from django.shortcuts import render
-from rest_framework import generics
-from rest_framework.response import Response
+from rest_framework import generics, mixins, permissions, authentication
 from rest_framework.decorators import api_view
-
-from characters.serializers import SerialSerializer
 from .serializers import *
 from .models import *
 
-class AllGadgetsAPIView(generics.ListAPIView):
-    queryset = Gadget.objects.all()
-    serializer_class = GadgetSerializer
+class GadgetMixinAPIView(
+    mixins.ListModelMixin,
+    mixins.RetrieveModelMixin,
+    generics.GenericAPIView
+    ):
 
-class GadgetDetailAPIView(generics.RetrieveAPIView):
     queryset = Gadget.objects.all()
     serializer_class = GadgetSerializer
-    # lookup_field = our pk
+    lookup_field = 'pk'
+    authentication_classes = [authentication.SessionAuthentication]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    def get(self, request, *args,**kwargs):
+        pk = kwargs.get("pk")
+        if pk is not None:
+            return self.retrieve(request, *args, **kwargs)        
+        return self.list(request, *args, **kwargs)
+
+
+GadgetView = GadgetMixinAPIView.as_view()
 
 # @api_view(['POST'])
 # def add_gadget(request, *args, **kwargs): 
