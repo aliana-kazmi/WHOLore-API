@@ -1,11 +1,15 @@
-from django.urls import path,re_path
+from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('companions/', AllCompanionsAPIView.as_view() ,name='all-companions'),
-    path('alien-Races/', AllAlienRacesAPIView.as_view() ,name='all-alien-races'),
-    path('villains/', AllVillainsAPIView.as_view() ,name='all-villains'),
-    path('doctors/',DoctorAPIView.as_view(),name='all-doctors'),
-    # path('<>',companion,name='all-companions'),
-    re_path(r'(?P<pk>[0-9]{1,4})/$',companion,name='view-companion'),
+    path('companions/<int:pk>/', CompanionView ,name='companion'),
+    path('alien-races/<int:pk>/', AlienView ,name='alien-race'),
+    path('villains/<int:pk>/', VillainView ,name='villain'),
+    path('doctors/<int:pk>/', DoctorView, name='doctor'),
+    path('companions/', CompanionView ,name='all-companions'),
+    path('alien-races/', AlienView ,name='all-alien-races'),
+    path('villains/', VillainView ,name='all-villains'),
+    path('doctors/', DoctorView, name='all-doctors'),
+
+    # re_path(r'companions/(?P<pk>[0-9]{1,4})/$',companion,name='view-companion'),
 ]

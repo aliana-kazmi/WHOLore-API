@@ -1,51 +1,114 @@
-from django.shortcuts import render
-from rest_framework import status,generics
+from django.shortcuts import render,get_object_or_404
+from rest_framework import status,generics, mixins
 from .models import *
 from .serializers import *
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+
+class CompanionMixinAPIView(
+    mixins.ListModelMixin,
+    mixins.RetrieveModelMixin,
+    generics.GenericAPIView
+    ):
+
+    queryset = Companion.objects.all()
+    serializer_class = CompanionSerializer
+    lookup_field = 'pk'
+
+    def get(self, request, *args,**kwargs):
+        pk = kwargs.get("pk")
+        if pk is not None:
+            return self.retrieve(request, *args, **kwargs)        
+        return self.list(request, *args, **kwargs)
+
+
+CompanionView = CompanionMixinAPIView.as_view()
 
 
 class AllCompanionsAPIView(generics.ListAPIView):
     queryset = Companion.objects.all()
     serializer_class = CompanionSerializer
 
+
+class AlienMixinAPIView(
+    mixins.ListModelMixin,
+    mixins.RetrieveModelMixin,
+    generics.GenericAPIView
+    ):
+
+    queryset = AlienRace.objects.all()
+    serializer_class = AlienSerializer
+    lookup_field = 'pk'
+
+    def get(self, request, *args,**kwargs):
+        pk = kwargs.get("pk")
+        if pk is not None:
+            return self.retrieve(request, *args, **kwargs)
+        return self.list(request, *args, **kwargs)
+
+AlienView = AlienMixinAPIView.as_view()
+
 class AllAlienRacesAPIView(generics.ListAPIView):
     queryset = AlienRace.objects.all()
     serializer_class = AlienSerializer
+
+
+class VillainMixinAPIView(
+    mixins.ListModelMixin,
+    mixins.RetrieveModelMixin,
+    generics.GenericAPIView
+    ):
+
+    queryset = Villain.objects.all()
+    serializer_class = VillainSerializer
+    lookup_field = 'pk'
+
+    def get(self, request, *args,**kwargs):
+        pk = kwargs.get("pk")
+        if pk is not None:
+            return self.retrieve(request, *args, **kwargs)
+        return self.list(request, *args, **kwargs)
+
+VillainView = VillainMixinAPIView.as_view()
 
 class AllVillainsAPIView(generics.ListAPIView):
     queryset = Villain.objects.all()
     serializer_class = VillainSerializer
 
+
+class DoctorMixinAPIView(
+    mixins.ListModelMixin,
+    mixins.RetrieveModelMixin,
+    generics.GenericAPIView
+    ):
+
+    queryset = Doctor.objects.all()
+    serializer_class = DoctorSerializer
+    lookup_field = 'pk'
+
+    def get(self, request, *args,**kwargs):
+        pk = kwargs.get("pk")
+        if pk is not None:
+            return self.retrieve(request, *args, **kwargs)
+        return self.list(request, *args, **kwargs)
+
+DoctorView = DoctorMixinAPIView.as_view()
+
 class DoctorAPIView(generics.ListAPIView):
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializer
 
-@api_view(['GET'])
-def companion(request, pk):
-    print('here')
-# def companion(request):
-    try:
-        print('here')
-        companion = Companion.objects.get(pk=pk)
-        serialized_companion = CompanionSerializer(companion)
-        serialized_companion['image'] = serialized_companion['image'][1:].replace('src%3D%22','').replace('%3A/','://www.')
-        return Response(serialized_companion.data)
-    
-    except Companion.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-
-    # data_here = {}
-    # if companion:
-    #     data_here = CompanionSerializer(companion).data
-        
-
-        
-        
-    else:
-        print('companion empty')
-    return Response(data_here)
+# @api_view(['GET'])
+# def companion(request, pk=None):
+#     # print('here')
+#     data_here = {}
+#     if pk is not None:
+#         # print('here')
+#         companion = get_object_or_404(Companion, pk=pk)
+#         serialized_companion = CompanionSerializer(companion)
+#         return Response(serialized_companion.data)
+#     else:
+#         print('companion empty')
+#     return Response(data_here)
 
     #TODO: add web scraper to views so that it keeps updating the database
