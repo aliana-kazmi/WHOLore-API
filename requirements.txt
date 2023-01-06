@@ -5,3 +5,5 @@ pyyaml
 requests
 django-cors-headers
 wikipedia
+sqlparse==0.4.3
+tzdata==2022.6
