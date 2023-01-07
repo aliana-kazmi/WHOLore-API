@@ -5,18 +5,22 @@ from characters.models import *
 from characters.serializers import *
 from rest_framework import generics, mixins, authentication, permissions
 
-BASE_URL= 'http://127.0.0.1:8000/api/'
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
+WEBSITE_URL = env('WEBSITE_URL')
 
 @api_view(['GET'])
 def api_home(request, *args, **kwargs):
     data_here = {
-        'Doctors':'{}characters/doctors/'.format(BASE_URL),
-        'Companions':'{}characters/companions/'.format(BASE_URL),
-        'Villains':'{}characters/villains/'.format(BASE_URL),
-        'Alien Race':'{}characters/alien-races/'.format(BASE_URL), 
-        'Gadgets':'{}gadgets/'.format(BASE_URL),  
-        'Serials':'{}serials/'.format(BASE_URL),
-        'Episodes':'{}episodes/'.format(BASE_URL)
+        'Doctors':'{}characters/doctors/'.format(WEBSITE_URL),
+        'Companions':'{}characters/companions/'.format(WEBSITE_URL),
+        'Villains':'{}characters/villains/'.format(WEBSITE_URL),
+        'Alien Race':'{}characters/alien-races/'.format(WEBSITE_URL), 
+        'Gadgets':'{}gadgets/'.format(WEBSITE_URL),  
+        'Serials':'{}serials/'.format(WEBSITE_URL),
+        'Episodes':'{}episodes/'.format(WEBSITE_URL)
     }
     return Response(data_here)
 
