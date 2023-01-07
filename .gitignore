@@ -101,6 +101,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+*.bak
 
 # Rope project settings
 .ropeproject
@@ -124,3 +125,4 @@ cython_debug/
 
 py_client/
 settings.py
+secret_key.txt
