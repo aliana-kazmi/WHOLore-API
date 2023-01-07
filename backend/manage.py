@@ -5,9 +5,15 @@ import sys
 
 
 def main():
+    import environ
+
+    # env = environ.Env()
+    # environ.Env.read_env()
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'home.settings')
     try:
+        from django.core.management.commands.runserver import Command as runserver
+        runserver.default_port = os.environ.get("PORT")
         from django.core.management import execute_from_command_line
     except ImportError as exc:
         raise ImportError(
