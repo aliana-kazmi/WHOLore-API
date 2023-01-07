@@ -16,8 +16,12 @@ import environ
 
 env = environ.Env()
 environ.Env.read_env()
+try:
+    SECRET_KEY = os.environ['SECRET_KEY']
+except:
+    from decouple import config
 
-SECRET_KEY = os.environ['SECRET_KEY']
+    SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = False
 
