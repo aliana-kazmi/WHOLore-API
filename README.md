@@ -11,6 +11,20 @@
 ## Introduction
 This documentation will help you get familiar with the resources of the **Doctor Who API** and show you how to make different queries, so that you can get the most out of it.
 
+##Baisc Set-up
+
+To use the project, clone the project by typing the following command:
+
+```
+git clone https://github.com/aliana-kazmi/Doctor-Who-API.git
+```
+
+Change the directory to backend and run the command 
+
+```
+python manage.py runserver
+```
+
 **Base URL:**
 
 The base url contains information about all available API's resources. All requests are `GET` requests and go over `https`. All responses will return data in `json`.
@@ -20,12 +34,13 @@ GET
 
 ```
 {
-  'Doctors':'',
-  'Comapnions':'',
-  'Writers':'',
-  'Gadgets':'',
-  'Serials':'',
-  'Allies':'',
+        'Doctors':'http://127.0.0.1:3000/characters/doctors/',
+        'Companions':'http://127.0.0.1:3000/characters/companions/',
+        'Villains':'http://127.0.0.1:3000/characters/villains/',
+        'Alien Race':'http://127.0.0.1:3000/characters/alien-races/', 
+        'Gadgets':'http://127.0.0.1:3000/gadgets/',  
+        'Serials':'http://127.0.0.1:3000/serials/',
+        'Episodes':'http://127.0.0.1:3000/episodes/'
 }
 ```
 ## Currently available resources
