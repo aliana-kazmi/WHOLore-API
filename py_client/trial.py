@@ -1,6 +1,6 @@
 import requests
 from urllib.parse import unquote
-endpoint = "http://127.0.0.1:8000/api/gadget/add-gadget/"
+endpoint = "http://127.0.0.1:3000/api/gadget/add-gadget/"
 
 get_response = requests.post(
     endpoint,
