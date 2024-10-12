@@ -3,10 +3,7 @@ from .views import *
 
 urlpatterns = [
     path("", api_home, name="api-home"),
-    path("serials/<int:pk>", SerialView,name='serial'),
-    path("episodes/<int:pk>", EpisodeView, name="episode"),      
-    path("episodes/", EpisodeView, name="episodes"),   
-    path("serials/", SerialView, name="serials"),      
+    path("show-details/",include('show_details.urls')),
     path("characters/",include('characters.urls')),
     path("gadgets/",include('gadgets.urls')),
     # path("serials/<int:season_no>/<int:serial_no>/",SerialDetailAPIView.as_view(),name="one-serial"),

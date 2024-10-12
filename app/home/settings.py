@@ -23,7 +23,7 @@ except:
 
     SECRET_KEY = config('SECRET_KEY')
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',    
     'api',
+    'show_details',
     'characters',
     'gadgets',
     'website',

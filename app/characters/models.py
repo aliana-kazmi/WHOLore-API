@@ -1,5 +1,5 @@
 from django.db import models
-from api.models import Writer, Season, Serial, Actor
+from show_details.models import Writer, Season, Serial, Actor
 
 class AlienRace(models.Model):
     name = models.CharField(max_length=70)

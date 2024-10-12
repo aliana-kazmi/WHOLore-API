@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from api.serializers import *
+from show_details.serializers import *
 from .models import *
 
 class CompanionSerializer(serializers.ModelSerializer):
@@ -22,7 +22,6 @@ class VillainSerializer(serializers.ModelSerializer):
         played_by = ActorSerializer(read_only=True,many=True)
         featured_in = EpisodeSerializer(read_only=True, many=True)
         race = AlienSerializer(read_only=True, many=True)
-
         model = Villain
         fields = '__all__'
 

@@ -20,7 +20,9 @@ class SerialSerializer(serializers.ModelSerializer):
 class ActorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Actor
+        fields = '__all__'
 
 class EpisodeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Episode
+        fields = '__all__'
