@@ -11,13 +11,13 @@ class SerialMixinAPIView(
 
     queryset = Serial.objects.all()
     serializer_class = SerialSerializer
-    lookup_field = 'pk'
+    lookup_field = 'title'
     authentication_classes = [authentication.SessionAuthentication]
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get(self, request, *args,**kwargs):
-        pk = kwargs.get("pk")
-        if pk is not None:
+        title = kwargs.get("title")
+        if title is not None:
             return self.retrieve(request, *args, **kwargs)        
         return self.list(request, *args, **kwargs)
 
@@ -32,13 +32,13 @@ class EpisodeMixinAPIView(
 
     queryset = Episode.objects.all()
     serializer_class = EpisodeSerializer
-    lookup_field = 'serial_no'
+    lookup_field = 'title'
     authentication_classes = [authentication.SessionAuthentication]
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get(self, request, *args,**kwargs):
-        serial_no = kwargs.get("serial_no")
-        if serial_no is not None:
+        title = kwargs.get("title")
+        if title is not None:
             return self.retrieve(request, *args, **kwargs)        
         return self.list(request, *args, **kwargs)
     

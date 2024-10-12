@@ -2,10 +2,10 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('companions/<int:pk>/', CompanionView ,name='companion'),
-    path('alien-races/<int:pk>/', AlienView ,name='alien-race'),
-    path('villains/<int:pk>/', VillainView ,name='villain'),
-    path('doctors/<int:pk>/', DoctorView, name='doctor'),
+    path('companions/<str:name>/', CompanionView ,name='companion'),
+    path('alien-races/<str:name>/', AlienView ,name='alien-race'),
+    path('villains/<str:name>/', VillainView ,name='villain'),
+    path('doctors/<int:number>/', DoctorView, name='doctor'),
     path('companions/', CompanionView ,name='all-companions'),
     path('alien-races/', AlienView ,name='all-alien-races'),
     path('villains/', VillainView ,name='all-villains'),

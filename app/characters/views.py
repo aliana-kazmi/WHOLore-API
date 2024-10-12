@@ -13,13 +13,13 @@ class CompanionMixinAPIView(
 
     queryset = Companion.objects.all()
     serializer_class = CompanionSerializer
-    lookup_field = 'pk'
+    lookup_field = 'name'
     authentication_classes = [authentication.SessionAuthentication]
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get(self, request, *args,**kwargs):
-        pk = kwargs.get("pk")
-        if pk is not None:
+        name = kwargs.get("name")
+        if name is not None:
             return self.retrieve(request, *args, **kwargs)        
         return self.list(request, *args, **kwargs)
 
@@ -35,11 +35,11 @@ class AlienMixinAPIView(
 
     queryset = AlienRace.objects.all()
     serializer_class = AlienSerializer
-    lookup_field = 'pk'
+    lookup_field = 'name'
 
     def get(self, request, *args,**kwargs):
-        pk = kwargs.get("pk")
-        if pk is not None:
+        name = kwargs.get("name")
+        if name is not None:
             return self.retrieve(request, *args, **kwargs)
         return self.list(request, *args, **kwargs)
 
@@ -54,11 +54,11 @@ class VillainMixinAPIView(
 
     queryset = Villain.objects.all()
     serializer_class = VillainSerializer
-    lookup_field = 'pk'
+    lookup_field = 'name'
 
     def get(self, request, *args,**kwargs):
-        pk = kwargs.get("pk")
-        if pk is not None:
+        name = kwargs.get("name")
+        if name is not None:
             return self.retrieve(request, *args, **kwargs)
         return self.list(request, *args, **kwargs)
 
@@ -73,11 +73,11 @@ class DoctorMixinAPIView(
 
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializer
-    lookup_field = 'pk'
+    lookup_field = 'number'
 
     def get(self, request, *args,**kwargs):
-        pk = kwargs.get("pk")
-        if pk is not None:
+        number = kwargs.get("number")
+        if number is not None:
             return self.retrieve(request, *args, **kwargs)
         return self.list(request, *args, **kwargs)
 

@@ -12,13 +12,13 @@ class GadgetMixinAPIView(
 
     queryset = Gadget.objects.all()
     serializer_class = GadgetSerializer
-    lookup_field = 'pk'
+    lookup_field = 'name'
     authentication_classes = [authentication.SessionAuthentication]
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get(self, request, *args,**kwargs):
-        pk = kwargs.get("pk")
-        if pk is not None:
+        name = kwargs.get("name")
+        if name is not None:
             return self.retrieve(request, *args, **kwargs)        
         return self.list(request, *args, **kwargs)
 
