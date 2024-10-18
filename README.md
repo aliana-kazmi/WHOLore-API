@@ -24,6 +24,9 @@ Change the directory to app and run the command
 ```
 python manage.py runserver
 ```
+## Entity Relationship Diagram
+
+<img alt="ER Diagram" src="media/relevant docs/WHOLore ER Diagram.jpg">
 
 ## Currently available resources
 
@@ -31,7 +34,7 @@ python manage.py runserver
 - Purpose: Retrieve information about all doctors featured in Doctor Who.
 - Usage:
   - /api/characters/doctors
-  - /api/characters/doctors/{doctor-number}
+  - /api/characters/doctors/{doctor-name}
 - Response Format: JSON
 - Example: GET /api/characters/doctors returns a list of all doctors with their respective details.
 
@@ -39,7 +42,7 @@ python manage.py runserver
 - Purpose: Access information about all companions featured in Doctor Who.
 - Usage:
   - /api/characters/companions
-  - /api/characters/companions/{companion-id}
+  - /api/characters/companions/{companion-name}
 - Response Format: JSON
 - Example: GET /api/characters/companions provides a list of all companions and their relevant details.
 
@@ -47,7 +50,7 @@ python manage.py runserver
 - Purpose: Access information about all villains featured in Doctor Who.
 - Usage:
   - /api/characters/villains
-  - /api/characters/villains/{villain-id}
+  - /api/characters/villains/{villain-name}
 - Response Format: JSON
 - Example: GET /api/characters/villains provides a list of all villains and their relevant details.
 
@@ -55,7 +58,7 @@ python manage.py runserver
 - Purpose: Retrieve information about all alien races associated with the character Doctor Who.
 - Usage:
   - api/characters/alien-races
-  - api/characters/alien-races/{alien-race-id}
+  - api/characters/alien-races/{alien-race-name}
 - Response Format: JSON
 - Example: GET api/characters/alien-races/ provides a list of alien races featured in the Doctor Who series
 
@@ -63,7 +66,7 @@ python manage.py runserver
 - Purpose: Retrieve information about all gadgets used by the Doctor in the series.
 - Usage:
   - /api/gadgets
-  - /api/gadgets/{gadget-id}
+  - /api/gadgets/{gadget-name}
 - Response Format: JSON
 - Example: GET /api/gadgets provides a comprehensive list of gadgets featured in Doctor Who.
 
@@ -79,7 +82,7 @@ python manage.py runserver
 - Purpose: Access details about all episodes of the Doctor Who series.
 - Usage:
   - /api/episodes
-  - /api/episodes/{episodes-number}
+  - /api/episodes/{episodes-name}
 - Response Format: JSON
 - Example: GET /api/writers returns details about writers who contributed to the show.
 
