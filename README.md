@@ -1,4 +1,4 @@
-# Doctor Who Rest API
+# WHOLore API
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD0dyUwF1M7nZovb0te6lgBVJEAsZPnZT1cg&usqp=CAU">
   <source media="(prefers-color-scheme: light)" srcset="https://logos-world.net/wp-content/uploads/2020/12/Doctor-Who-Logo-2018-present.jpg">
